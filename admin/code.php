@@ -1,7 +1,7 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] .'/woliso-attendance/lang.php');
 session_start();
-$connection = mysqli_connect("localhost","root","","woliso_eams");
+require_once($_SERVER['DOCUMENT_ROOT'] .'/woliso-attendance/connection.php');
 
 //For Manage Employee
 if(isset($_POST['registerbtn'])){
