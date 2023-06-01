@@ -4,7 +4,7 @@
  
  require_once($_SERVER['DOCUMENT_ROOT'] .'/woliso-attendance/lang.php');
 
-$connection = mysqli_connect("localhost","root","","woliso_eams");
+ require_once($_SERVER['DOCUMENT_ROOT'] .'/woliso-attendance/connection.php');
 
 if(isset($_POST['delete_btn'])) {
        $id = $_POST['delete_id'];
