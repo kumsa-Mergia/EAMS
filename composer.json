@@ -1,0 +1,14 @@
+{
+    "name": "woliso-tvet/employee-attendance-managment",  // Replace with your project details
+    "description": "A description of your project",
+    "type": "project", // Usually "project" for web apps
+    "require": {
+        "php": "^8.1" // Or your PHP version constraint
+        // Add your project's dependencies here later
+    },
+    "autoload": {
+        "psr-4": {
+            "YourNamespace\\": "src/" // Adjust to your namespace and directory
+        }
+    }
+}
