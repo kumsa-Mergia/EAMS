@@ -1,0 +1,27 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1' # Or your desired version
+          extensions: mbstring,xml,mysql,pdo,cli,intl # Add necessary extensions
+      - name: Install Dependencies
+        run: composer install --no-dev
+      - name: Linting (PHPCS)
+        run: composer run-script phpcs
+      - name: Unit Tests
+        run: composer run-script test
+      - name: Static Analysis (Psalm)
+        run: composer run-script psalm
