@@ -2,24 +2,24 @@ name: Continuous Integration
 
 on:
   push:
-    branches: [main]
+    branches: [main, develop]
   pull_request:
-    branches: [main]
+    branches: [main, develop]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3  # This should now get composer.json
+      - uses: actions/checkout@v3
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.1'
-          extensions: mbstring,xml,mysql,pdo,cli,intl
+          extensions: mbstring,xml,mysql,pdo,intl # Corrected extensions
       - name: Install Dependencies
-        run: composer install --no-dev  # Should work now!
-      - name: Linting (PHPCS) # These will now run
+        run: composer install --no-dev # This should work AFTER composer.json is fixed
+      - name: Linting (PHPCS)
         run: composer run-script phpcs
       - name: Unit Tests
         run: composer run-script test
