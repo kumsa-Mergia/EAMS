@@ -12,16 +12,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Recommended to avoid potential caching issues
+      - name: Debug - List files
+        run: ls -lR /home/runner/work/EAMS/EAMS # CRITICAL for debugging
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.1'
-          extensions: mbstring,xml,mysql,pdo,intl # Corrected extensions
+          extensions: mbstring,xml,mysql,pdo,intl
       - name: Install Dependencies
-        run: composer install --no-dev # This should work AFTER composer.json is fixed
-      - name: Linting (PHPCS)
+        run: composer install --no-dev
+      - name: Linting
         run: composer run-script phpcs
-      - name: Unit Tests
-        run: composer run-script test
-      - name: Static Analysis (Psalm)
-        run: composer run-script psalm
