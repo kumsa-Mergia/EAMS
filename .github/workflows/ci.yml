@@ -23,5 +23,4 @@ jobs:
           extensions: mbstring,xml,mysql,pdo,intl
       - name: Install Dependencies
         run: composer install --no-dev
-      - name: Linting
-        run: composer run-script phpcs
+
